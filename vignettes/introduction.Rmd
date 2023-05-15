@@ -1,0 +1,38 @@
+---
+title: "introduction to ipbase"
+author: Dominik Kukacka
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{introduction}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# Introduction
+
+`ipbase` is the official package for accessing currency conversion data from [ipbase.com](https://ipbase.com). The API requires a registered API key. The free plan provides 100 free monthly requests. You can register an API key [here](https://app.ipbase.com/register). [Premium plans](https://ipbase.com/pricing/) provide access to more requests and more data endpoints. The full API documentation can be found [here](https://ipbase.com/docs/)
+
+## Setting up authentication
+
+After registering your API key, set your API key locally by calling the helper function `ipbase_api_key()` or by manually calling `Sys.setenv(IPBASE_API_KEY = <key>)`.
+
+## Making your first API request
+
+Call `get_ip_info()` to retrieve all IP information from your client's IP address. Add an IP address as parameter and you will retrieve all information about this specific IP, e.g. `get_ip_info(0.0.0.0)`.
+
+## Available Functions
+
+* `get_api_status()` - can be used to check whether the API is available. Requests do not count towards your monthly request volume. Information about your API key are provided. Available in `free & paid` plans.
+* `get_ip_info()` - provides you with information about any IP address. Available in `free & paid` plans.
+* `get_asn_info()` - provides you with information about any ASN. Available in `paid` plans.
+* `get_domain_info()` - provides you with information about all domains that are hosted on a single IP address. Available in `paid` plans.
+
+Please read our [API documentation](https://ipbase.com/docs/) for all information.
